@@ -1,0 +1,36 @@
+.container {
+    margin: auto;
+    width: 80%;
+    padding:10px;
+    margin-top: 5px;
+    flex-wrap: nowrap;
+}
+.p-button-rounded {
+    margin-left: 10px;
+}
+.span {
+    margin-right: 5px;
+}
+
+
+.box {
+    position: relative;
+    margin: 5px auto;
+    width: 80%;
+    height: 100px;
+    background: rgb(104, 152, 240);
+    border-radius: 20px;
+    
+  }
+  
+h4 {
+text-align: center;
+}
+
+
+.row {
+    flex-flow: nowrap;
+}
+.col {
+    padding: 0%;
+}

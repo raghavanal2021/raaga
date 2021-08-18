@@ -1,0 +1,18 @@
+.panelcont {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.p-card-content	 {
+    align-items: center;
+}
+
+.cardcheck {
+    margin-top: 10px;
+}
+
+.datetext {
+   height: 20px;
+   text-align: center;
+
+}

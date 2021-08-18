@@ -1,0 +1,9 @@
+.bullish {
+    font-weight: 700;
+    color: green;   
+}
+
+.bearish {
+    font-weight: 700;
+    color: red;
+}

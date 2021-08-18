@@ -1,0 +1,23 @@
+export interface CPRModel {
+    prevhigh:Number;
+    prevlow:Number;
+    prevclose:Number;
+    prevVolume:Number;
+    symbol:String;
+    relativeVol:Number;
+    timestamp:Date;
+    pivot:Number;
+    BC:Number;
+    TC:Number;
+    width:Number;
+    averagewidth:Number;
+    WidthShape:String;
+    R1:Number;
+    R2:Number;
+    R3:Number;
+    R4:Number;
+    S1:Number;
+    S2:Number;
+    S3:Number;
+    S4:Number;
+}

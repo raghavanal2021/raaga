@@ -1,0 +1,49 @@
+<div>
+    <h4>{{companyname}}{{isincode}}</h4>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                   <h5>Opening Range Width</h5>
+                <p-chart type="line" [data]="basicData" [options]="basicOptions"></p-chart>
+                
+            </div>
+          
+        </div>
+        <div class = "col">
+          <div class = "table">
+          <p-table [value]="ranges" styleClass="p-datatable-striped" sortMode="multiple"  [scrollable]="true" scrollHeight="flex">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Symbol</th>
+                <th pSortableColumn="tradeDate">Date<p-sortIcon field="tradeDate"></p-sortIcon></th>
+                <th>Range High</th>
+                <th>Range Low</th>
+                <th>Range Width</th>
+              </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-ranges>
+              <tr>
+                <td>{{ranges.Symbol}}</td>
+                <td>{{ranges.tradeDate}}</td>
+                <td>{{ranges.ORHigh}}</td>
+                <td>{{ranges.ORLow}}</td>
+                <td>{{ranges.ORWidth}}</td>
+              </tr>
+            </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class = "container">
+    <div class="row">
+        <div class="col">
+          <div class="card">
+            <h5>Trending Stats</h5>
+            <p-chart type="line" [data]="basicData" [options]="basicOptions"></p-chart>
+          </div>
+          </div>    
+      </div>
+</div>

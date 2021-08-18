@@ -1,0 +1,32 @@
+<div>
+<p-fieldset legend="Configure Backtest" [toggleable]="true">
+    <div class = "container">
+    <div class = "row">
+        <div class = "col">
+            Ticker: 
+    <p-autoComplete [(ngModel)]="text" [suggestions]="results" (completeMethod)="search($event)"  [minLength]=1>
+        Choose the Ticker..
+    </p-autoComplete>
+</div>
+<div class="col">
+    Strategy:
+    <p-dropdown [options]="strategies" [(ngModel)]="selectedstrategy"></p-dropdown>
+</div>
+<div class="col">
+        <label for="range">Date: </label>
+        <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
+</div>
+<div class="col">
+<button  pButton pRipple type="button" label="Go"  (click)="retrieve($event)"></button></div>
+</div>
+</div>
+<div class = "container">
+    <div class = "row">
+    <div class = "col">
+    
+</div></div>
+</div>  
+</p-fieldset>
+</div>
+<div *ngIf=showDiv>
+<app-opening-range [companyname] = companyname [isincode] = isincode [ticker] = text [startDate] = startDate [endDate] = endDate></app-opening-range>

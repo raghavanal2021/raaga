@@ -1,0 +1,50 @@
+
+<p-table #dt [value]="nr7data" [scrollable]="true" selectionMode="single" [(selection)]="selectedstocks" scrollHeight="400px">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Symbol</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Close</th>
+            <th>Trend</th>
+            <th pSortableColumn="volume">Volume <p-sortIcon field="volume"></p-sortIcon> </th>
+            <th pSortableColumn="relativeVol">Relative Volume <p-sortIcon field="relativeVol"></p-sortIcon></th>
+            <th pSortableColumn="range">Range <p-sortIcon field="range"></p-sortIcon> </th>
+            <th>NR7 </th>
+            <th style="width:4rem"></th>
+        </tr>
+    </ng-template>
+    
+    <ng-template pTemplate="body" let-nr7data>
+      
+        <tr>        
+           <td>{{nr7data.symbol}}</td>
+           <td>{{nr7data.openPrice}}</td>
+           <td>{{nr7data.highPrice}}</td>
+           <td>{{nr7data.lowPrice}}</td>
+           <td>{{nr7data.closePrice}}</td>
+           <td><div *ngIf="nr7data.closePrice > nr7data.openPrice">
+            <p-button label="Bullish" styleClass="p-button-success">
+            </p-button>
+        </div>
+        <div *ngIf="nr7data.closePrice < nr7data.openPrice">
+            <p-button label="Bearish" styleClass="p-button-danger">
+                </p-button>
+        </div>
+        
+           </td>
+           <td>{{nr7data.volume}}</td>
+           <td>{{nr7data.relativeVol| number : '1.2-2'}}x</td>
+           <td>{{nr7data.range}}</td>
+           <td> {{nr7data.NR7}}</td>
+            <td>
+            <button type="button" pButton pRipple icon="pi pi-desktop" (click)="selectstockrow(nr7data)"></button>
+                </td>
+        </tr>
+
+    </ng-template>
+</p-table>
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle">    
+</p-confirmDialog>

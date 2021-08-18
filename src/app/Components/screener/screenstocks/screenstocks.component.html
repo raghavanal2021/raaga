@@ -1,0 +1,79 @@
+<div class="container">
+<div class = "cardcheck">
+<p-card>
+ <ng-template pTemplate="header">
+        Choose Screener Date
+    </ng-template>
+    <div class= "datetext">
+     <label for="range">Date: </label> 
+        <p-calendar [(ngModel)]="targetDate"  [readonlyInput]="true" inputId="range"></p-calendar>
+        <span> </span>
+          <button pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded p-button-success" (click)="retrieve($event)"></button>
+        </div>
+       
+       
+</p-card>
+  
+</div>
+</div>
+
+
+<div class="container">
+<div class="panelcont"  *ngIf="targetDate!= null&&isclicked">
+<p-panel [toggleable]="true">
+ <ng-template pTemplate="header"><div class="container"> Narrow Range 7 
+    <p-badge value = "{{this.nr7count}}"
+    size="large"
+    severity="primary"
+    styleClass="p-mr-2"
+  ></p-badge>
+  </div>
+    </ng-template>
+    <app-nr7 [targetDate]="formattedtargetDate" (countChanged)="nr7countchangedHandler($event)"></app-nr7>
+</p-panel>
+</div>
+<div class="panelcont" *ngIf="targetDate!= null&&isclicked">
+<p-panel [toggleable]="true">
+<ng-template pTemplate="header"><div class="container">Narrow Range 4 
+    <p-badge value = "{{this.nr4count}}"
+    size="large"
+    severity="primary"
+    styleClass="p-mr-2"
+  ></p-badge>
+  </div>
+    </ng-template>
+ 
+    <app-nr4 [targetDate]="formattedtargetDate" (countChanged)="nr4countchangedHandler($event)"></app-nr4>
+</p-panel>
+</div>
+<div class="panelcont" *ngIf="targetDate!= null&&isclicked">
+<p-panel [toggleable]="true">
+<ng-template pTemplate="header">
+<div class="container">
+    Central Pivot Range 
+    <p-badge value = "{{this.cprcount}}"
+    size="large"
+    severity="primary"
+    styleClass="p-mr-2"
+  ></p-badge>
+</div>
+    </ng-template>
+
+    <app-cpr [targetDate]="formattedtargetDate" (countChanged)="cprcountchangedHandler($event)"></app-cpr>
+</p-panel>
+</div>
+<div class="panelcont" *ngIf="targetDate!= null&&isclicked">
+
+<p-panel [toggleable]="true">
+<ng-template pTemplate="header"><div class = "container">Candle Stick Patterns
+    <p-badge value = "{{this.candlescount}}"
+    size="large"
+    severity="primary"
+    styleClass="p-mr-2"
+  ></p-badge>
+  </div>
+    </ng-template>
+    <app-technicals [targetDate]="formattedtargetDate" (countChanged)="candlescountchangedHandler($event)"></app-technicals>
+</p-panel>
+</div>
+</div>

@@ -1,0 +1,45 @@
+
+<p-table [value]="nr4data" [scrollable]="true" scrollHeight="400px">
+   
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Symbol</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Close</th>
+            <th>Trend</th>
+            <th pSortableColumn="volume">Volume <p-sortIcon field="volume"></p-sortIcon> </th>
+            <th pSortableColumn="relativeVol">Relative Volume <p-sortIcon field="relativeVol"></p-sortIcon></th>
+            <th pSortableColumn="range">Range <p-sortIcon field="range"></p-sortIcon> </th>
+            <th>NR4 </th>
+            
+        </tr>
+    </ng-template>
+    
+    <ng-template pTemplate="body" let-nr4data>
+      
+        <tr>        
+           <td>{{nr4data.symbol}}</td>
+           <td>{{nr4data.openPrice}}</td>
+           <td>{{nr4data.highPrice}}</td>
+           <td>{{nr4data.lowPrice}}</td>
+           <td>{{nr4data.closePrice}}</td>
+           <td><div *ngIf="nr4data.closePrice > nr4data.openPrice">
+            <p-button label="Bullish" styleClass="p-button-success">
+            </p-button>
+        </div>
+        <div *ngIf="nr4data.closePrice < nr4data.openPrice">
+            <p-button label="Bearish" styleClass="p-button-danger">
+                </p-button>
+        </div>
+        
+           </td>
+           <td>{{nr4data.volume}}</td>
+           <td>{{nr4data.relativeVol| number : '1.2-2'}}x</td>
+           <td>{{nr4data.range}}</td>
+           <td> {{nr4data.NR4}}</td>
+        </tr>
+
+    </ng-template>
+</p-table>

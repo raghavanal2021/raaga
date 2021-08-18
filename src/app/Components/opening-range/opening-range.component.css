@@ -1,0 +1,17 @@
+h4 {
+    text-align: center;
+}
+
+.container{
+width: 100%;
+}
+
+.table {
+    height: 30%;
+}
+.row{
+    position: relative;
+    height: 350px;
+    margin-top: 20px;
+    padding: 10px;
+}

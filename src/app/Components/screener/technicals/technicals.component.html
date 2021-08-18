@@ -1,0 +1,35 @@
+
+<p-table #dt [value]="candlesdata" [scrollable]="true" scrollHeight="400px" scrollDirection="both" [resizableColumns]="true">
+    <ng-template pTemplate="header">
+        <tr>
+            <th pResizableColumn>Symbol</th>
+            <th pResizableColumn>Open</th>
+            <th pResizableColumn>High</th>
+            <th pResizableColumn>Low</th>
+            <th pResizableColumn>Close</th>
+            <th pResizableColumn>Volume</th>
+            <th pResizableColumn pSortableColumn="relativeVol">Relative Volume <p-sortIcon field="relativeVol"></p-sortIcon></th>
+            <th pResizableColumn pSortableColumn="CandlePattern">Candle Pattern <p-sortIcon field="CandlePattern"></p-sortIcon></th>
+            <th>Pattern Type</th>
+           
+            
+        </tr>
+    </ng-template>
+    
+    <ng-template pTemplate="body" let-candlesdata>
+      
+        <tr>        
+           <td>{{candlesdata.symbol}}</td>
+           <td>{{candlesdata.openPrice}}</td>
+           <td>{{candlesdata.highPrice}}</td>
+           <td>{{candlesdata.lowPrice}}</td>
+           <td>{{candlesdata.closePrice}}</td>
+           <td>{{candlesdata.volume}}</td>
+           <td>{{candlesdata.relativeVol}}</td>
+           <td>{{candlesdata.CandlePattern}}</td>
+           <td>{{candlesdata.PatternType}} </td>
+           
+        </tr>
+
+    </ng-template>
+</p-table>
