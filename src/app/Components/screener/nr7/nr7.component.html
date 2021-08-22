@@ -32,7 +32,10 @@
             <p-button label="Bearish" styleClass="p-button-danger">
                 </p-button>
         </div>
-        
+        <div *ngIf="nr7data.closePrice == nr7data.openPrice">
+            <p-button label="Neutral" styleClass="p-button-warning">
+                </p-button>
+        </div>
            </td>
            <td>{{nr7data.volume}}</td>
            <td>{{nr7data.relativeVol| number : '1.2-2'}}x</td>

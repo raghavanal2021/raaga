@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { NarrowRange } from 'src/app/Models/NarrowRangeModel';
 import { Nr4screenerService } from 'src/app/Services/nr4screener.service';
+import {ConfirmationService} from 'primeng/api';
+
 @Component({
   selector: 'app-nr4',
   templateUrl: './nr4.component.html',
@@ -11,8 +13,9 @@ export class Nr4Component implements OnInit {
   @Input() targetDate:string;
   stockcount:any;
   @Output() countChanged: EventEmitter<number> =   new EventEmitter();
-
-  constructor(private nr4service:Nr4screenerService) { }
+  selectedstock:String;
+  display:boolean= false
+  constructor(private nr4service:Nr4screenerService, private confirmationService: ConfirmationService ) { }
 
   ngOnInit(): void {
   }
@@ -26,4 +29,20 @@ export class Nr4Component implements OnInit {
   })
 
 }
+
+
+selectstockrow(nr7:NarrowRange) {
+  this.display = true
+  this.selectedstock = nr7.symbol
+  this.confirmationService.confirm(
+    {
+      message: 'Are you sure to add ' +  this.selectedstock +' to the watchlist?',
+      accept:() =>{
+
+      }
+    }
+  )
+}
+
+
 }

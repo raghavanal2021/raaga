@@ -30,7 +30,9 @@ import {CardModule} from 'primeng/card';
 import {BadgeModule} from 'primeng/badge';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
-import {SidebarModule} from 'primeng/sidebar';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
+import { RuneodService } from './Services/runeod.service';
+import { RunEODWebSocket } from './Services/runeodwebsocket';
 
 @NgModule({
   declarations: [
@@ -64,9 +66,9 @@ import {SidebarModule} from 'primeng/sidebar';
     CardModule,
     BadgeModule,
     ConfirmDialogModule,
-    SidebarModule
+    OverlayPanelModule
   ],
-  providers: [MasterService,DatePipe,ConfirmationService],
+  providers: [MasterService,DatePipe,ConfirmationService,RuneodService,RunEODWebSocket],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

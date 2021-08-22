@@ -11,8 +11,14 @@
     margin-top: 10px;
 }
 
-.datetext {
-   height: 20px;
-   text-align: center;
+.sidebarcontainer {
+   Height:auto;
 
+}
+
+.configure {
+    margin-top: 10px;
+    margin-left:20px;
+    text-align: center;
+    margin-right: 20px;
 }

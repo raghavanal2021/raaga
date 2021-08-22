@@ -1,21 +1,29 @@
-<div class="container">
-<div class = "cardcheck">
-<p-card>
- <ng-template pTemplate="header">
-        Choose Screener Date
-    </ng-template>
-    <div class= "datetext">
-     <label for="range">Date: </label> 
+
+<div class="container">    
+    <p-overlayPanel #op>
+    <ng-template pTemplate>
+     <label for="range">Choose Screener Date </label> 
         <p-calendar [(ngModel)]="targetDate"  [readonlyInput]="true" inputId="range"></p-calendar>
-        <span> </span>
-          <button pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded p-button-success" (click)="retrieve($event)"></button>
+        <div>
+          <button pButton pRipple type="button" icon="pi pi-search" label="Search" class="p-button- p-button-success" (click)="retrieve($event)"></button>
         </div>
-       
-       
-</p-card>
-  
+</ng-template>
+</p-overlayPanel>
+    <p-overlayPanel #rop>
+    <ng-template pTemplate>
+     <label for="range">Choose Screener Date to calculate Screener </label> 
+        <p-calendar [(ngModel)]="rangeDates" selectionMode="range"  [readonlyInput]="true"  inputId="range"></p-calendar>
+        <div>
+          <button pButton pRipple type="button" icon="pi pi-search" label="Search" class="p-button- p-button-success" (click)="runload($event)"></button>
+        </div>
+</ng-template>
+</p-overlayPanel>
+
+<div class = "configure">
+<button #ebutton type="text" class="configure" icon="pi pi-calendar" pButton label= {{selectedDate}} (click)="op.toggle($event)"></button>
+<button #rbutton type="text" class="configure p-button- p-button-warning"  icon="pi pi-cog" pButton label= {{runDate}} (click)="rop.toggle($event)"></button>
 </div>
-</div>
+
 
 
 <div class="container">

@@ -33,12 +33,18 @@
             <p-button label="Bearish" styleClass="p-button-danger">
                 </p-button>
         </div>
-        
+         <div *ngIf="nr4data.closePrice == nr4data.openPrice">
+            <p-button label="Neutral" styleClass="p-button-warning">
+                </p-button>
+        </div>
            </td>
            <td>{{nr4data.volume}}</td>
            <td>{{nr4data.relativeVol| number : '1.2-2'}}x</td>
            <td>{{nr4data.range}}</td>
            <td> {{nr4data.NR4}}</td>
+           <td>
+            <button type="button" pButton pRipple icon="pi pi-desktop" (click)="selectstockrow(nr4data)"></button>
+                </td>
         </tr>
 
     </ng-template>

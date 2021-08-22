@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { DatePipe } from '@angular/common';
+import { RuneodService } from 'src/app/Services/runeod.service';
+
 @Component({
   selector: 'app-screenstocks',
   templateUrl: './screenstocks.component.html',
@@ -16,7 +18,13 @@ export class ScreenstocksComponent implements OnInit {
   nr4count:number;
   cprcount:number;
   candlescount:number;
-  constructor( public datepipe:DatePipe) { }
+  display:boolean;
+  selectedDate:String = "Choose the date"
+  runDate:String = "Choose the date to run Screener"
+  startDate:any;
+  endDate:any;
+  rangeDates: Date[];
+  constructor( public datepipe:DatePipe, private eodService:RuneodService){ }
 
   ngOnInit(): void {
     
@@ -24,8 +32,8 @@ export class ScreenstocksComponent implements OnInit {
 
   retrieve(event){
     this.formattedtargetDate = this.datepipe.transform(this.targetDate,'yyyyMMdd')
-    alert(this.formattedtargetDate)
     this.isclicked = true
+    this.selectedDate = this.formattedtargetDate
     
   }
 
@@ -43,4 +51,15 @@ export class ScreenstocksComponent implements OnInit {
   candlescountchangedHandler(count) {
     this.candlescount =parseInt(count)
   }
-}
+  runload(event)
+  { 
+    this.startDate = this.datepipe.transform(this.rangeDates[0],'yyyyMMdd')
+    this.endDate = this.datepipe.transform(this.rangeDates[1],'yyyyMMdd')
+    let contract  =JSON.parse('{"startdate":"' + this.startDate.toString() +'","enddate":"' + this.endDate.toString() + '"'+ ',"noofdays":20}')
+    this.eodService.sendMsg(contract)
+    this.eodService.messages.subscribe(msg => {
+    console.log(msg);
+    })    
+  }
+  }
+
