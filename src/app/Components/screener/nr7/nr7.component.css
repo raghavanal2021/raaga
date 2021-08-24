@@ -7,3 +7,10 @@
     font-weight: 700;
     color: red;
 }
+
+
+.dark-panel.p-panel {
+    .p-panel-titlebar {
+        background: #212121;
+    }
+}

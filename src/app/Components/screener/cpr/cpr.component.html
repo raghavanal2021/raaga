@@ -1,5 +1,21 @@
 
-<p-table #dt [value]="cprdata" [scrollable]="true" scrollHeight="400px">
+<p-table #dt  responsiveLayout="stack" [value]="cprdata" [scrollable]="true" scrollHeight="400px"
+  [resizableColumns]="true" columnResizeMode="expand" dataKey="Symbol"
+selectionMode = "single" [(selection)] = "selectedcprrow" (onRowSelect)="showDialog()">
+ <ng-template pTemplate="colgroup">
+            <colgroup>
+                <col style="width:15%">
+                <col style="width:10%">
+                <col style="width:10%">
+                <col style="width:10%">
+                <col style="width:10%">
+                <col style="width:15%">
+                <col style="width:15%">
+                <col style="width:10%">   
+                <col style="width:10%">
+                <col style="width:10%">
+            </colgroup>
+  </ng-template>
     <ng-template pTemplate="header">
         <tr>
             <th>Symbol</th>
@@ -7,24 +23,26 @@
             <th>Low</th>
             <th>Close</th>
             <th pSortableColumn="prevVolume">Volume <p-sortIcon field="prevVolume"></p-sortIcon> </th>
-            <th pSortableColumn="relativeVol">Relative Volume <p-sortIcon field="relativeVol"></p-sortIcon></th>
+            <th pSortableColumn="relativeVol">Rel.Volume <p-sortIcon field="relativeVol"></p-sortIcon></th>
             <th pSortableColumn="width">Width <p-sortIcon field="width"></p-sortIcon></th>
-            <th pSortableColumn="averagewidth">Average Width <p-sortIcon field="averagewidth"></p-sortIcon></th>
-            <th pSortableColumn="WidthShape">Width Shape <p-sortIcon field="WidthShape"></p-sortIcon></th>
+            <th pSortableColumn="averagewidth">Avg Width <p-sortIcon field="averagewidth"></p-sortIcon></th>
+            <th pSortableColumn="WidthShape">Shape <p-sortIcon field="WidthShape"></p-sortIcon></th>
         </tr>
     </ng-template>
     
+   
+   
     <ng-template pTemplate="body" let-cprdata>
-      
-        <tr>        
+        <tr [pSelectableRow]="cprdata">        
+
            <td>{{cprdata.symbol}}</td>
            <td>{{cprdata.prevhigh}}</td>
            <td>{{cprdata.prevlow}}</td>
            <td>{{cprdata.prevclose}}</td>
            <td>{{cprdata.prevVolume}}</td>
            <td>{{cprdata.relativeVol| number : '1.2-2'}}x</td>
-           <td>{{cprdata.width}}</td>
-           <td>{{cprdata.averagewidth}}</td>
+           <td>{{cprdata.width| number : '1.2-2'}}</td>
+           <td>{{cprdata.averagewidth| number : '1.2-2'}}</td>
            <td>{{cprdata.WidthShape}}</td>
            <td>
             <button type="button" pButton pRipple icon="pi pi-desktop" (click)="selectstockrow(cprdata)"></button>
@@ -33,3 +51,76 @@
 
     </ng-template>
 </p-table>
+<div  *ngIf = "detaildisplay">
+<p-dialog header="Details" [(visible)]="detaildisplay"  [style]="{width: '75vw'}" [baseZIndex]="10000"> 
+<div class="p-d-flex">
+<h4>{{selectedcprrow.symbol}}</h4>
+<h6>Pivot Ranges</h6>
+<p-table [value]="selectedcpr"  styleClass="p-datatable-gridlines">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Pivot</th>
+            <th>TC</th>
+            <th>BC</th>
+            <th>Previous Day High</th>
+            <th>Previous Day Low</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-selectedcpr>
+        <tr>
+            <td>{{selectedcpr.TC}}</td>
+            <td>{{selectedcpr.BC}}</td>
+            <td>{{selectedcpr.pivot}}</td>
+            <td>{{selectedcpr.prevhigh}}</td>
+            <td>{{selectedcpr.prevlow}}</td>
+           
+        </tr>
+    </ng-template>
+</p-table>
+<h6>Resistance Levels</h6>
+<p-table [value]="selectedcpr"  styleClass="p-datatable-gridlines">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>R1</th>
+            <th>R2</th>
+            <th>R3</th>
+            <th>R4</th>
+            
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-selectedcpr>
+        <tr>
+            <td>{{selectedcpr.R1}}</td>
+            <td>{{selectedcpr.R2}}</td>
+            <td>{{selectedcpr.R3}}</td>
+            <td>{{selectedcpr.R4}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<h6>Support Levels</h6>
+<p-table [value]="selectedcpr"  styleClass="p-datatable-gridlines">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>S1</th>
+            <th>S2</th>
+            <th>S3</th>
+            <th>S4</th>
+            
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-selectedcpr>
+        <tr>
+            <td>{{selectedcpr.S1}}</td>
+            <td>{{selectedcpr.S2}}</td>
+            <td>{{selectedcpr.S3}}</td>
+            <td>{{selectedcpr.S4}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+</div>
+
+</p-dialog>
+
+</div>

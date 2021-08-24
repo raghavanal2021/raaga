@@ -1,7 +1,7 @@
 export interface CandlesModel
 {
     symbol:String,
-    tradedate:Date,
+    tradedate:String,
     openPrice:Number,
     highPrice:Number,
     lowPrice:Number,

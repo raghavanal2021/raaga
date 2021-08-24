@@ -33,6 +33,11 @@ import {ConfirmationService} from 'primeng/api';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import { RuneodService } from './Services/runeod.service';
 import { RunEODWebSocket } from './Services/runeodwebsocket';
+import {DataViewModule} from 'primeng/dataview';
+import {DialogModule} from 'primeng/dialog';
+import { MessageService } from 'primeng/api';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 @NgModule({
   declarations: [
@@ -47,6 +52,7 @@ import { RunEODWebSocket } from './Services/runeodwebsocket';
     Nr4Component,
     CprComponent,
     TechnicalsComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -66,9 +72,13 @@ import { RunEODWebSocket } from './Services/runeodwebsocket';
     CardModule,
     BadgeModule,
     ConfirmDialogModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    DataViewModule,
+    DialogModule,
+    MessagesModule,
+    MessageModule
   ],
-  providers: [MasterService,DatePipe,ConfirmationService,RuneodService,RunEODWebSocket],
+  providers: [MasterService,DatePipe,ConfirmationService,RuneodService,RunEODWebSocket,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

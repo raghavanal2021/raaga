@@ -8,9 +8,10 @@
             <th pResizableColumn>Low</th>
             <th pResizableColumn>Close</th>
             <th pResizableColumn>Volume</th>
-            <th pResizableColumn pSortableColumn="relativeVol">Relative Volume <p-sortIcon field="relativeVol"></p-sortIcon></th>
+            <th pResizableColumn pSortableColumn="relativeVol">Rel.Volume <p-sortIcon field="relativeVol"></p-sortIcon></th>
             <th pResizableColumn pSortableColumn="CandlePattern">Candle Pattern <p-sortIcon field="CandlePattern"></p-sortIcon></th>
             <th>Pattern Type</th>
+            <th></th>
            
             
         </tr>
@@ -25,10 +26,12 @@
            <td>{{candlesdata.lowPrice}}</td>
            <td>{{candlesdata.closePrice}}</td>
            <td>{{candlesdata.volume}}</td>
-           <td>{{candlesdata.relativeVol}}</td>
+           <td>{{candlesdata.relativeVol| number : '1.2-2'}}</td>
            <td>{{candlesdata.CandlePattern}}</td>
            <td>{{candlesdata.PatternType}} </td>
-           
+             <td>
+            <button type="button" pButton pRipple icon="pi pi-desktop" (click)="selectstockrow(candlesdata)"></button>
+                </td>
         </tr>
 
     </ng-template>

@@ -1,7 +1,7 @@
 export interface NarrowRange {
     index?:Number;
     symbol?:String;
-    tradeDate?:Date;
+    tradedate?:String;
     openPrice?:Number;
     highPrice?:Number;
     lowPrice?:Number;

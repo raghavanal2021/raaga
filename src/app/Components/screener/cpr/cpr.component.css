@@ -1,0 +1,9 @@
+.p-card-header	{
+    background-color: coral;
+}   
+
+.darkpanel.p-panel {
+    .p-panel-titlebar {
+        background: #212121;
+    }
+}
